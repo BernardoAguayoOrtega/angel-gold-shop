@@ -1,5 +1,6 @@
 "use client"; // This is a client component 👈🏽
 
+import Link from "next/link";
 // Navbar.client.jsx
 
 import { useState } from "react";
@@ -11,6 +12,17 @@ import {
   AiOutlineMenu,
   AiOutlineClose,
 } from "react-icons/ai";
+
+type LinkProps = {
+  ref: string;
+  label: string;
+};
+
+const NavigationLinks: LinkProps[] = [
+  { ref: "#", label: "Jewelry" },
+  { ref: "#", label: "New Releases" },
+  { ref: "#", label: "Gifts" },
+];
 
 export default function Navbar(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,22 +52,20 @@ export default function Navbar(): JSX.Element {
           </div>
 
           {/* Navigation Links - show in md and hide in mobile */}
-          {!isMenuOpen ? (
-            <div
-              className={`md:flex space-x-10 items-center ${
-                isMenuOpen ? "flex" : "hidden"
-              }`}>
-              <a href='#' className='text-gray-600 hover:text-gray-900'>
-                Jewelry
-              </a>
-              <a href='#' className='text-gray-600 hover:text-gray-900'>
-                New Releases
-              </a>
-              <a href='#' className='text-gray-600 hover:text-gray-900'>
-                Gifts
-              </a>
-            </div>
-          ) : null}
+          <div
+            className={`md:flex space-x-10 items-center ${
+              isMenuOpen ? "flex" : "hidden"
+            }`}>
+            {!isMenuOpen &&
+              NavigationLinks.map((link) => (
+                <Link
+                  key={link.ref}
+                  href={link.ref}
+                  className='hidden md:block text-gray-600 hover:text-gray-900'>
+                  {link.label}
+                </Link>
+              ))}
+          </div>
 
           {/* Search and Cart Icons */}
           <div className='flex items-center space-x-4'>
@@ -71,21 +81,16 @@ export default function Navbar(): JSX.Element {
           className={`absolute top-16 left-0 w-full bg-white z-50 shadow-md rounded-b-lg md:hidden ${
             isMenuOpen ? "block" : "hidden"
           }`}>
-          <a
-            href='#'
-            className='block text-gray-600 hover:text-gray-900 px-4 py-2 text-sm'>
-            Jewelry
-          </a>
-          <a
-            href='#'
-            className='block text-gray-600 hover:text-gray-900 px-4 py-2 text-sm'>
-            New Releases
-          </a>
-          <a
-            href='#'
-            className='block text-gray-600 hover:text-gray-900 px-4 py-2 text-sm'>
-            Gifts
-          </a>
+          <div className='flex flex-col space-y-4 p-4'>
+            {NavigationLinks.map((link) => (
+              <Link
+                key={link.ref}
+                href={link.ref}
+                className='text-gray-600 hover:text-gray-900'>
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </nav>
