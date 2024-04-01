@@ -1,6 +1,8 @@
 "use client"; // This is a client component 👈🏽
 
-import { useState } from 'react';
+// Navbar.client.jsx
+
+import { useState } from "react";
 import {
   AiOutlineHeart,
   AiOutlineSearch,
@@ -8,7 +10,7 @@ import {
   AiOutlineUser,
   AiOutlineMenu,
   AiOutlineClose,
-} from 'react-icons/ai';
+} from "react-icons/ai";
 
 export default function Navbar(): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,14 +19,16 @@ export default function Navbar(): JSX.Element {
     <nav className='bg-white shadow'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex items-center justify-between h-16'>
-          
           {/* Mobile menu button */}
           <div className='md:hidden'>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className='text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
-            >
-              {isMenuOpen ? <AiOutlineClose className='h-6 w-6' /> : <AiOutlineMenu className='h-6 w-6' />}
+              className='text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
+              {isMenuOpen ? (
+                <AiOutlineClose className='h-6 w-6' />
+              ) : (
+                <AiOutlineMenu className='h-6 w-6' />
+              )}
             </button>
           </div>
 
@@ -36,17 +40,22 @@ export default function Navbar(): JSX.Element {
           </div>
 
           {/* Navigation Links - show in md and hide in mobile */}
-          <div className={`md:flex space-x-10 items-center ${isMenuOpen ? 'flex' : 'hidden'}`}>
-            <a href='#' className='text-gray-600 hover:text-gray-900'>
-              Jewelry
-            </a>
-            <a href='#' className='text-gray-600 hover:text-gray-900'>
-              New Releases
-            </a>
-            <a href='#' className='text-gray-600 hover:text-gray-900'>
-              Gifts
-            </a>
-          </div>
+          {!isMenuOpen ? (
+            <div
+              className={`md:flex space-x-10 items-center ${
+                isMenuOpen ? "flex" : "hidden"
+              }`}>
+              <a href='#' className='text-gray-600 hover:text-gray-900'>
+                Jewelry
+              </a>
+              <a href='#' className='text-gray-600 hover:text-gray-900'>
+                New Releases
+              </a>
+              <a href='#' className='text-gray-600 hover:text-gray-900'>
+                Gifts
+              </a>
+            </div>
+          ) : null}
 
           {/* Search and Cart Icons */}
           <div className='flex items-center space-x-4'>
@@ -58,19 +67,26 @@ export default function Navbar(): JSX.Element {
         </div>
 
         {/* Mobile Navigation Links - hide in md and above */}
-        {isMenuOpen && (
-          <div className='md:hidden'>
-            <a href='#' className='block text-gray-600 hover:text-gray-900 px-2 py-2 rounded-md text-base font-medium'>
-              Jewelry
-            </a>
-            <a href='#' className='block text-gray-600 hover:text-gray-900 px-2 py-2 rounded-md text-base font-medium'>
-              New Releases
-            </a>
-            <a href='#' className='block text-gray-600 hover:text-gray-900 px-2 py-2 rounded-md text-base font-medium'>
-              Gifts
-            </a>
-          </div>
-        )}
+        <div
+          className={`absolute top-16 left-0 w-full bg-white z-50 shadow-md rounded-b-lg md:hidden ${
+            isMenuOpen ? "block" : "hidden"
+          }`}>
+          <a
+            href='#'
+            className='block text-gray-600 hover:text-gray-900 px-4 py-2 text-sm'>
+            Jewelry
+          </a>
+          <a
+            href='#'
+            className='block text-gray-600 hover:text-gray-900 px-4 py-2 text-sm'>
+            New Releases
+          </a>
+          <a
+            href='#'
+            className='block text-gray-600 hover:text-gray-900 px-4 py-2 text-sm'>
+            Gifts
+          </a>
+        </div>
       </div>
     </nav>
   );
