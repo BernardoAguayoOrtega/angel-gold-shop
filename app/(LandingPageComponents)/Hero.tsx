@@ -1,4 +1,4 @@
-const HeroSection = () => {
+const HeroSection: React.FC = (): JSX.Element => {
   return (
     <div className='relative bg-black text-white'>
       {/* Overlay if needed */}
