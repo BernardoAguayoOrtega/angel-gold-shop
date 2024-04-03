@@ -3,7 +3,7 @@
 import Link from "next/link";
 // Navbar.client.jsx
 
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import {
   AiOutlineHeart,
   AiOutlineSearch,
@@ -80,7 +80,7 @@ const MobileMenuButtonComponent: React.FC<MobileMenuButtonComponentType> = ({
   isMenuOpen,
   setIsMenuOpen,
 }): JSX.Element => (
-  <div className='md:hidden'>
+  <div className='md:hidden flex justify-center'>
     <button
       onClick={() => setIsMenuOpen(!isMenuOpen)}
       className='text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
@@ -94,7 +94,7 @@ const MobileMenuButtonComponent: React.FC<MobileMenuButtonComponentType> = ({
 );
 
 export default function Navbar(): JSX.Element {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen]:[boolean, Dispatch<SetStateAction<boolean>>] = useState(false);
 
   return (
     <nav className='bg-white shadow'>
