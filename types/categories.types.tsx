@@ -1,6 +1,8 @@
+import { StaticImageData } from "next/image";
+
 type categories = {
     name: string;
-    image: string;
+    image: StaticImageData;
     path: string;
 }
 
