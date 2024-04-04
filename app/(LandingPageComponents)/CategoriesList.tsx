@@ -29,7 +29,7 @@ const CategoriesSection: React.FC = (): JSX.Element => {
                   className='w-full h-full object-center object-cover lg:w-full lg:h-full'
                 />
               </div>
-              <div className='mt-4 flex justify-between'>
+              <div className='mt-6 flex justify-center'>
                 <div>
                   <h3 className='text-sm text-gray-700'>
                     <a href='#'>
