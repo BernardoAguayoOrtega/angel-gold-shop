@@ -14,10 +14,14 @@ const CategoriesSection: React.FC = (): JSX.Element => {
   return (
     <div className='bg-white'>
       <div className='max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
-        <h2 className='text-2xl font-extrabold tracking-tight text-gray-900'>
-          Shop by category
-        </h2>
-        <p className='mt-2 text-sm text-gray-500'>Indulge in what we offer.</p>
+        <div className="justify-center flex-col items-center">
+          <h2 className='text-2xl font-extrabold tracking-tight text-gray-900'>
+            Shop by category
+          </h2>
+          <p className='mt-2 text-sm text-gray-500'>
+            Indulge in what we offer.
+          </p>
+        </div>
         <div className='mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-5 xl:gap-x-8'>
           {categories.map((category) => (
             <div key={category.name} className='group relative'>
