@@ -7,18 +7,18 @@ import React from "react";
 import necklaces from "@/public/images/necklaces.jpg";
 
 const categories: categoriesType[] = [
-  { name: "Necklaces", image: "/images/necklaces.jpg", path: "/necklaces"},
-  { name: "Earrings", image: "/images/earrings.jpg", path: "/earrings"},
-  { name: "Bracelets", image: "/images/bracelets.jpg", path: "/bracelets"},
-  { name: "Rings", image: "/images/rings.jpg", path: "/rings"},
-  { name: "Charms", image: "/images/charms.jpg", path: "/charms"},
+  { name: "Necklaces", image: "/images/necklaces.jpg", path: "/necklaces" },
+  { name: "Earrings", image: "/images/earrings.jpg", path: "/earrings" },
+  { name: "Bracelets", image: "/images/bracelets.jpg", path: "/bracelets" },
+  { name: "Rings", image: "/images/rings.jpg", path: "/rings" },
+  { name: "Charms", image: "/images/charms.jpg", path: "/charms" },
 ];
 
 const CategoriesSection: React.FC = (): JSX.Element => {
   return (
     <div className='bg-white'>
       <div className='max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
-        <div className="justify-center flex-col items-center">
+        <div className='justify-center flex-col items-center flex'>
           <h2 className='text-2xl font-extrabold tracking-tight text-gray-900'>
             Shop by category
           </h2>
@@ -29,15 +29,15 @@ const CategoriesSection: React.FC = (): JSX.Element => {
         <div className='mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-5 xl:gap-x-8'>
           {categories.map((category) => (
             <div key={category.name} className='group relative'>
-              <div className='w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none'>
-                <Image
-                  src={necklaces}
-                  alt={category.name}
-                  layout='fill'
-                  objectFit='cover'
-                  className='w-full h-full object-center object-cover lg:w-full lg:h-full'
-                />
-              </div>
+              <Image
+                src={necklaces}
+                alt={category.name}
+                layout='responsive' // Changed from 'fill' to 'responsive'
+                objectFit='cover'
+                width={500} // Set a specific width
+                height={400} // Set a specific height
+                className='w-full h-full object-center lg:w-full lg:h-full'
+              />
               <div className='mt-6 flex justify-center'>
                 <h3 className='text-sm text-gray-700'>
                   <Link href='#'>
