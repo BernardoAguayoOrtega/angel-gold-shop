@@ -1,13 +1,17 @@
+import { categories as categoriesType } from "@/types/categories.types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const categories = [
-  { name: "Necklaces", imageUrl: "/images/necklaces.jpg" },
-  { name: "Earrings", imageUrl: "/images/earrings.jpg" },
-  { name: "Bracelets", imageUrl: "/images/bracelets.jpg" },
-  { name: "Rings", imageUrl: "/images/rings.jpg" },
-  { name: "Charms", imageUrl: "/images/charms.jpg" },
+// images
+import necklaces from "@/public/images/necklaces.jpg";
+
+const categories: categoriesType[] = [
+  { name: "Necklaces", image: "/images/necklaces.jpg", path: "/necklaces"},
+  { name: "Earrings", image: "/images/earrings.jpg", path: "/earrings"},
+  { name: "Bracelets", image: "/images/bracelets.jpg", path: "/bracelets"},
+  { name: "Rings", image: "/images/rings.jpg", path: "/rings"},
+  { name: "Charms", image: "/images/charms.jpg", path: "/charms"},
 ];
 
 const CategoriesSection: React.FC = (): JSX.Element => {
@@ -27,7 +31,7 @@ const CategoriesSection: React.FC = (): JSX.Element => {
             <div key={category.name} className='group relative'>
               <div className='w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none'>
                 <Image
-                  src={category.imageUrl}
+                  src={necklaces}
                   alt={category.name}
                   layout='fill'
                   objectFit='cover'
