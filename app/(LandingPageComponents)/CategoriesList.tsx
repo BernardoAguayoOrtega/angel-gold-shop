@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const categories = [
@@ -30,14 +31,12 @@ const CategoriesSection: React.FC = (): JSX.Element => {
                 />
               </div>
               <div className='mt-6 flex justify-center'>
-                <div>
-                  <h3 className='text-sm text-gray-700'>
-                    <a href='#'>
-                      <span aria-hidden='true' className='absolute inset-0' />
-                      {category.name}
-                    </a>
-                  </h3>
-                </div>
+                <h3 className='text-sm text-gray-700'>
+                  <Link href='#'>
+                    <span aria-hidden='true' className='absolute inset-0' />
+                    {category.name}
+                  </Link>
+                </h3>
               </div>
             </div>
           ))}
