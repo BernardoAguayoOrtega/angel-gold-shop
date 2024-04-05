@@ -31,30 +31,28 @@ const CategoriesSection: React.FC = (): JSX.Element => {
           </p>
         </div>
         <div className='mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-5 xl:gap-x-8'>
-        {categories.map((category) => (
-  <div key={category.name} className="group relative">
-    {/* Image container with shadow */}
-    <div className="w-full h-80 bg-gray-200 rounded-md overflow-hidden shadow-lg"> {/* Added shadow */}
-      <Image
-        src={category.image}
-        alt={category.name}
-        layout="fill" // Changed to 'fill' to ensure image covers the container
-        objectFit="cover" // Ensures image covers the div and retains aspect ratio
-        className="w-full h-full object-center"
-      />
-    </div>
-    {/* Text container */}
-    <div className="mt-4 text-center relative top-10">
-      <h3 className="text-sm text-gray-700">
-        <Link href="#">
-          {category.name}
-        </Link>
-      </h3>
-    </div>
-  </div>
-))}
-
-
+          {categories.map((category) => (
+            <div key={category.name} className='group relative'>
+              {/* Image container with shadow */}
+              <div className='w-full h-80 bg-gray-200 rounded-md overflow-hidden shadow-lg'>
+                {" "}
+                {/* Added shadow */}
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  layout='fill' // Changed to 'fill' to ensure image covers the container
+                  objectFit='cover' // Ensures image covers the div and retains aspect ratio
+                  className='w-full h-full object-center'
+                />
+              </div>
+              {/* Text container */}
+              <div className='mt-4 text-center relative top-10'>
+                <h3 className='text-sm text-gray-700'>
+                  <Link href='#'>{category.name}</Link>
+                </h3>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
