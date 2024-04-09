@@ -3,7 +3,7 @@ import gift from "../../public/images/gift.jpg";
 
 const GiftSection = (): JSX.Element => {
   return (
-    <div className="flex flex-col lg:flex-row">
+    <div className="flex flex-col lg:flex-row mt-10">
       {/* Left block with background color */}
       <div className="lg:flex-1 flex flex-col justify-center bg-gray-100 p-8">
         <h2 className="text-4xl font-bold mb-4">Gifts of the season</h2>
