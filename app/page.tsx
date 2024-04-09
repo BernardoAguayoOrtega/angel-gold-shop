@@ -1,3 +1,4 @@
+import AboutSection from "./(LandingPageComponents)/AboutSection";
 import CategoriesSection from "./(LandingPageComponents)/CategoriesList";
 import GiftsSection from "./(LandingPageComponents)/GiftSection";
 import HeroSection from "./(LandingPageComponents)/Hero";
@@ -8,6 +9,7 @@ export default function Home() {
       <HeroSection />
       <CategoriesSection />
       <GiftsSection />
+      <AboutSection />
     </main>
   );
 }
