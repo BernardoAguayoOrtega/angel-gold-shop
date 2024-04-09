@@ -30,27 +30,26 @@ const CategoriesSection: React.FC = (): JSX.Element => {
             Indulge in what we offer.
           </p>
         </div>
-        <div className='mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-5 xl:gap-x-8'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-12'>
           {categories.map((category) => (
-            <Link href='#' key={category.name}>
-              <div className='group relative'>
-                {/* Image container with subtle shadow and hover effect */}
-                <div className='w-full h-80 bg-gray-200 rounded-md overflow-hidden shadow-sm hover:shadow-2xl transition-shadow duration-300'>
-                  {/* Added subtle shadow and hover effect */}
+            <div key={category.name} className='group'>
+              <Link href={category.path}>
+                <span className='block relative h-64 md:h-80 xl:h-96 rounded overflow-hidden p-4'>
+                  {" "}
+                  {/* Added p-4 for padding */}
                   <Image
                     src={category.image}
-                    alt={category.name}
                     layout='fill'
                     objectFit='cover'
-                    className='w-full h-full object-center'
+                    alt={category.name}
+                    className='transition duration-300 ease-in-out transform group-hover:scale-105'
                   />
-                </div>
-                {/* Text container */}
-                <div className='mt-4 text-center relative top-10'>
-                  <h3 className='text-sm text-gray-700'>{category.name}</h3>
-                </div>
+                </span>
+              </Link>
+              <div className='mt-4 text-center'>
+                <h3 className='text-xl font-medium'>{category.name}</h3>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
