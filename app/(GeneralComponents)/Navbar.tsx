@@ -12,6 +12,7 @@ import {
   AiOutlineMenu,
   AiOutlineClose,
 } from "react-icons/ai";
+import CartSidebar from "./CartSidebar";
 
 type LinkProps = {
   ref: string;
@@ -108,6 +109,7 @@ export default function Navbar(): JSX.Element {
           <NavigationLinksComponent isMobile={false} isMenuOpen={isMenuOpen} />
           <IconMenuComponent />
           <NavigationLinksComponent isMobile={true} isMenuOpen={isMenuOpen} />
+          <CartSidebar isOpen />
         </div>
       </div>
     </nav>
