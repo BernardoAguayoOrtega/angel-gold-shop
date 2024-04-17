@@ -3,7 +3,7 @@
 import Link from "next/link";
 // Navbar.client.jsx
 
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, MouseEventHandler, SetStateAction, useState } from "react";
 import {
   AiOutlineHeart,
   AiOutlineSearch,
@@ -63,18 +63,27 @@ const NavigationLinksComponent: React.FC<NavigationLinksComponentProps> = ({
   );
 };
 
-const IconMenuComponent = (): JSX.Element => (
+type IconMenuComponentType = {
+  handleOpenCart: MouseEventHandler<SVGElement>;
+};
+
+const IconMenuComponent = ({
+  handleOpenCart,
+}: IconMenuComponentType): JSX.Element => (
   <div className='flex items-center space-x-4'>
     <AiOutlineSearch className='h-6 w-6 text-gray-600 hover:text-gray-900 cursor-pointer' />
     <AiOutlineHeart className='h-6 w-6 text-gray-600 hover:text-gray-900 cursor-pointer' />
-    <AiOutlineShoppingCart className='h-6 w-6 text-gray-600 hover:text-gray-900 cursor-pointer' />
+    <AiOutlineShoppingCart
+      onClick={handleOpenCart}
+      className='h-6 w-6 text-gray-600 hover:text-gray-900 cursor-pointer'
+    />
     <AiOutlineUser className='h-6 w-6 text-gray-600 hover:text-gray-900 cursor-pointer' />
   </div>
 );
 
 interface MobileMenuButtonComponentType {
   isMenuOpen: boolean;
-  setIsMenuOpen: (value: boolean) => void;
+  setIsMenuOpen: MouseEventHandler<HTMLButtonElement>;
 }
 
 const MobileMenuButtonComponent: React.FC<MobileMenuButtonComponentType> = ({
@@ -83,7 +92,7 @@ const MobileMenuButtonComponent: React.FC<MobileMenuButtonComponentType> = ({
 }): JSX.Element => (
   <div className='md:hidden flex justify-center'>
     <button
-      onClick={() => setIsMenuOpen(!isMenuOpen)}
+      onClick={setIsMenuOpen}
       className='text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
       {isMenuOpen ? (
         <AiOutlineClose className='h-6 w-6' />
@@ -94,22 +103,48 @@ const MobileMenuButtonComponent: React.FC<MobileMenuButtonComponentType> = ({
   </div>
 );
 
+type stateType = {
+  isMenuOpen: boolean;
+  isCartOpen: boolean;
+};
+
 export default function Navbar(): JSX.Element {
-  const [isMenuOpen, setIsMenuOpen]:[boolean, Dispatch<SetStateAction<boolean>>] = useState(false);
+  const [state, setState]: [stateType, Dispatch<SetStateAction<stateType>>] =
+    useState<stateType>({
+      isMenuOpen: false,
+      isCartOpen: false,
+    });
+
+  const toggleCart = (): void =>
+    setState((prevState: stateType) => ({
+      ...prevState,
+      isCartOpen: !prevState.isCartOpen,
+    }));
 
   return (
     <nav className='bg-white shadow'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex items-center justify-between h-16'>
           <MobileMenuButtonComponent
-            isMenuOpen={isMenuOpen}
-            setIsMenuOpen={setIsMenuOpen}
+            isMenuOpen={state.isMenuOpen}
+            setIsMenuOpen={() =>
+              setState((prevState) => ({
+                ...prevState,
+                isMenuOpen: !prevState.isMenuOpen,
+              }))
+            }
           />
           <LogoComponent />
-          <NavigationLinksComponent isMobile={false} isMenuOpen={isMenuOpen} />
-          <IconMenuComponent />
-          <NavigationLinksComponent isMobile={true} isMenuOpen={isMenuOpen} />
-          <CartSidebar isOpen />
+          <NavigationLinksComponent
+            isMobile={false}
+            isMenuOpen={state.isMenuOpen}
+          />
+          <IconMenuComponent handleOpenCart={toggleCart} />
+          <NavigationLinksComponent
+            isMobile={true}
+            isMenuOpen={state.isMenuOpen}
+          />
+          <CartSidebar isOpen={state.isCartOpen} onClose={toggleCart} />
         </div>
       </div>
     </nav>
