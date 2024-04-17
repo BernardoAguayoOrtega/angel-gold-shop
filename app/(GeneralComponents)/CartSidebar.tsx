@@ -1,6 +1,7 @@
 // components/Sidebar.tsx
 
 import React from "react";
+import { AiOutlineClose } from "react-icons/ai";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -20,7 +21,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}>
         <button onClick={onClose} className='text-black p-2 focus:outline-none'>
-          ×
+          <AiOutlineClose className='h-6 w-6' />
         </button>
         <div className='p-4'>
           {/* Content of your sidebar */}
