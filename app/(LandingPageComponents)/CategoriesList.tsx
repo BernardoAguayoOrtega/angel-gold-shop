@@ -11,11 +11,11 @@ import earrings from "@/public/images/earrings.jpg";
 import rings from "@/public/images/rings.jpg";
 
 const categories: categoriesType[] = [
-  { name: "Necklaces", image: necklaces, path: "/necklaces" },
-  { name: "Earrings", image: earrings, path: "/earrings" },
-  { name: "Bracelets", image: bracelets, path: "/bracelets" },
-  { name: "Rings", image: rings, path: "/rings" },
-  { name: "Charms", image: charms, path: "/charms" },
+  { name: "Necklaces", image: necklaces, path: "/category/necklaces" },
+  { name: "Earrings", image: earrings, path: "/category/earrings" },
+  { name: "Bracelets", image: bracelets, path: "/category/bracelets" },
+  { name: "Rings", image: rings, path: "/category/rings" },
+  { name: "Charms", image: charms, path: "/category/charms" },
 ];
 
 const CategoriesSection: React.FC = (): JSX.Element => {
