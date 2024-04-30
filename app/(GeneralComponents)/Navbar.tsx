@@ -21,6 +21,7 @@ import {
   NavigationLinksComponentProps,
   stateType,
 } from "@/types/Navbar.types";
+import Dropdown from "./Dropdown";
 
 const NavigationLinks: LinkProps[] = [
   { ref: "#", label: "Jewelry" },
@@ -50,12 +51,7 @@ const NavigationLinksComponent: React.FC<NavigationLinksComponentProps> = ({
           : "space-x-10 items-center"
       }`}>
       {NavigationLinks.map((link) => (
-        <Link
-          key={link.ref}
-          href={link.ref}
-          className='text-gray-600 hover:text-gray-900 block'>
-          {link.label}
-        </Link>
+        <Dropdown />
       ))}
     </div>
   );
