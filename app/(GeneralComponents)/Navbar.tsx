@@ -3,7 +3,7 @@
 import Link from "next/link";
 // Navbar.client.jsx
 
-import { Dispatch, MouseEventHandler, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import {
   AiOutlineHeart,
   AiOutlineSearch,
@@ -14,10 +14,13 @@ import {
 } from "react-icons/ai";
 import CartSidebar from "./CartSidebar";
 
-type LinkProps = {
-  ref: string;
-  label: string;
-};
+import {
+  IconMenuComponentType,
+  LinkProps,
+  MobileMenuButtonComponentType,
+  NavigationLinksComponentProps,
+  stateType,
+} from "@/types/Navbar.types";
 
 const NavigationLinks: LinkProps[] = [
   { ref: "#", label: "Jewelry" },
@@ -32,11 +35,6 @@ const LogoComponent = (): JSX.Element => (
     </Link>
   </div>
 );
-
-interface NavigationLinksComponentProps {
-  isMobile: boolean;
-  isMenuOpen: boolean;
-}
 
 const NavigationLinksComponent: React.FC<NavigationLinksComponentProps> = ({
   isMobile,
@@ -63,10 +61,6 @@ const NavigationLinksComponent: React.FC<NavigationLinksComponentProps> = ({
   );
 };
 
-type IconMenuComponentType = {
-  handleOpenCart: MouseEventHandler<SVGElement>;
-};
-
 const IconMenuComponent = ({
   handleOpenCart,
 }: IconMenuComponentType): JSX.Element => (
@@ -80,11 +74,6 @@ const IconMenuComponent = ({
     <AiOutlineUser className='h-6 w-6 text-gray-600 hover:text-gray-900 cursor-pointer' />
   </div>
 );
-
-interface MobileMenuButtonComponentType {
-  isMenuOpen: boolean;
-  setIsMenuOpen: MouseEventHandler<HTMLButtonElement>;
-}
 
 const MobileMenuButtonComponent: React.FC<MobileMenuButtonComponentType> = ({
   isMenuOpen,
@@ -102,11 +91,6 @@ const MobileMenuButtonComponent: React.FC<MobileMenuButtonComponentType> = ({
     </button>
   </div>
 );
-
-type stateType = {
-  isMenuOpen: boolean;
-  isCartOpen: boolean;
-};
 
 export default function Navbar(): JSX.Element {
   const [state, setState]: [stateType, Dispatch<SetStateAction<stateType>>] =
