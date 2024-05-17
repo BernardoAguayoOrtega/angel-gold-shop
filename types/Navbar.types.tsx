@@ -3,6 +3,7 @@ import { MouseEventHandler } from "react";
 export type LinkProps = {
   ref: string;
   label: string;
+  component: React.FC<DropdownProps> | React.FC<NavLinkProps>;
 };
 
 export interface NavigationLinksComponentProps {
@@ -23,3 +24,13 @@ export type stateType = {
   isMenuOpen: boolean;
   isCartOpen: boolean;
 };
+
+export type DropdownProps = {
+  label: string;
+  items: string[];
+};
+
+export interface NavLinkProps {
+  href: string;
+  label: string;
+}

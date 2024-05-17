@@ -22,11 +22,12 @@ import {
   stateType,
 } from "@/types/Navbar.types";
 import Dropdown from "./Dropdown";
+import NavLink from "./NavLink";
 
 const NavigationLinks: LinkProps[] = [
-  { ref: "#", label: "Jewelry" },
-  { ref: "#", label: "New Releases" },
-  { ref: "#", label: "Gifts" },
+  { ref: "#", label: "Jewelry", component: Dropdown },
+  { ref: "#", label: "New Releases", component: NavLink },
+  { ref: "#", label: "Gifts", component: NavLink },
 ];
 
 const LogoComponent = (): JSX.Element => (
@@ -47,11 +48,11 @@ const NavigationLinksComponent: React.FC<NavigationLinksComponentProps> = ({
         isMobile ? (isMenuOpen ? "block" : "hidden") : "hidden md:flex"
       } ${
         isMobile
-          ? "absolute top-16 left-0 w-full bg-white z-50 shadow-md rounded-b-lg p-4"
+          ? "absolute top-16 left-0 w-full bg-white z-50 shadow-md rounded-b-lg p-4 flex flex-col space-y-4"
           : "space-x-10 items-center"
       }`}>
       {NavigationLinks.map((link) => (
-        <Dropdown />
+        <link.component href={link.ref} key={link.label} label={link.label} items={["item1"]} />
       ))}
     </div>
   );

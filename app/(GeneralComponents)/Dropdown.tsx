@@ -1,6 +1,7 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { DropdownProps } from "@/types/Navbar.types";
+import { Dispatch, FC, SetStateAction, useEffect, useRef, useState } from "react";
 
-const Dropdown = ({ label = "Item", items = ["element1", "element2"] }) => {
+const Dropdown: FC<DropdownProps> = ({ label = "Item", items = ["element1", "element2"] }) => {
   const [isOpen, setIsOpen]: [boolean, Dispatch<SetStateAction<boolean>>] =
     useState<boolean>(false);
   const toggleDropdown = () => setIsOpen(!isOpen);
@@ -30,7 +31,7 @@ const Dropdown = ({ label = "Item", items = ["element1", "element2"] }) => {
     <div className='relative' ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className='px-4 py-2 bg-gray-200 text-black rounded-md focus:outline-none'>
+        className='px-4 py-2 text-black font-italic rounded-md focus:outline-none'>
         {label}
       </button>
       {isOpen && (
